@@ -4,7 +4,6 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PhotoController; 
 use App\Http\Controllers\BerandaController; 
@@ -12,13 +11,22 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController; 
 use App\Http\Controllers\PenjualanController; 
 
-Route::get('/beranda', [BerandaController::class, 'home']);
-Route::get('/category/food-beverage ', [ProdukController::class, 'kategoriFood']);
-Route::get('/category/beauty-health', [ProdukController::class, 'kategoriBeauty']);
-Route::get('/category/home-care ', [ProdukController::class, 'kategoriCare']);
-Route::get('/category/baby-kid', [ProdukController::class, 'kategoriBaby']);
-Route::get('/user', [UserController::class, 'user']);
-Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LevelController; 
+
+
+Route::get('/', function () { return view('welcome');
+});
+Route::get('/level', [LevelController::class, 'index']);
+
+
+// Route::get('/beranda', [BerandaController::class, 'home']);
+// Route::get('/category/food-beverage ', [ProdukController::class, 'kategoriFood']);
+// Route::get('/category/beauty-health', [ProdukController::class, 'kategoriBeauty']);
+// Route::get('/category/home-care ', [ProdukController::class, 'kategoriCare']);
+// Route::get('/category/baby-kid', [ProdukController::class, 'kategoriBaby']);
+// Route::get('/user', [UserController::class, 'user']);
+// Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
 
 //Route::get('/hello', [WelcomeController::class, 'hello']);
 //
