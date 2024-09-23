@@ -10,7 +10,7 @@ class UserController extends Controller
 {
 public function index()
 {
-        $user = UserModel::all();
+        $user = UserModel::with('level')->get();
         return view('user', ['data' => $user]);
 }
 public function tambah()
@@ -52,4 +52,5 @@ public function hapus($id)
                 $user = UserModel::find($id); $user->delete();
                 return redirect('/user');
         }
+        
  }
