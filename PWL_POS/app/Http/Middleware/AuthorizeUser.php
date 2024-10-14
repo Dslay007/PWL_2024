@@ -22,6 +22,6 @@ class AuthorizeUser
         // jika tidak punya role, maka tampilkan error 403
         abort(403, 'Akses ditolak. Maaf, Anda tidak memiliki izin untuk mengakses halaman ini. 
         Jika Anda merasa ini adalah kesalahan, silakan hubungi administrator untuk bantuan lebih lanjut.');
-
+        
     }
 }
