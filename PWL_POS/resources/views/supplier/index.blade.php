@@ -22,7 +22,6 @@
                     <th>Kode Supplier</th>
                     <th>Nama Supplier</th>
                     <th>Alamat Supplier</th>
-                    <th>No Telepon</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -81,12 +80,6 @@ data-keyboard="false" data-width="75%" aria-hidden="true"></div>
                 },
                 {
                     data: "supplier_alamat", 
-                    className: "",
-                    orderable: true, 
-                    searchable: true
-                },
-                {
-                    data: "notelp", 
                     className: "",
                     orderable: true, 
                     searchable: true
