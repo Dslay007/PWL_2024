@@ -9,16 +9,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::pattern('id', '[0-9]+');
 
@@ -90,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/import', [BarangController::class, 'import']);
             Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
             Route::get('/export_excel', [BarangController::class, 'export_excel']);
+            Route::get('/export_pdf', [BarangController::class, 'export_pdf']);
             Route::delete('/{id}', [BarangController::class, 'destroy']);
         });
     });
