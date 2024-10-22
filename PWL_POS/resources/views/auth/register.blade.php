@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,13 +17,14 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head>
+
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center"><a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a></div>
             <div class="card-body">
-                <p class="login-box-msg">Daftar untuk memulai sesi Anda</p>
+                <p class="login-box-msg">Sign up to start your session</p>
                 <form action="{{ url('register') }}" method="POST" id="form-register">
                     @csrf
                     <div class="form-group">
@@ -64,6 +66,7 @@
         <!-- /.card -->
     </div>
     <!-- /.login-box -->
+
     <!-- jQuery -->
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
@@ -100,7 +103,7 @@
                 },
                 password: {
                     required: true,
-                    minlength: 5,
+                    minlength: 6,
                     maxlength: 20
                 }
                 },
@@ -148,4 +151,5 @@
         });
     </script>
 </body>
+
 </html>

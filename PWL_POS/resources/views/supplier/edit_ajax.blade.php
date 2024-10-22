@@ -44,12 +44,6 @@
                                 class="form-control" required>
                             <small id="error-supplier_alamat" class="error-text form-text text-danger"></small>
                         </div>
-                        <div class="form-group">
-                            <label>No Telepon</label>
-                            <input value="{{ $supplier->notelp }}" type="text" name="notelp" id="notelp" 
-                                class="form-control" required>
-                            <small id="error-notelp" class="error-text form-text text-danger"></small>
-                        </div>    
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
