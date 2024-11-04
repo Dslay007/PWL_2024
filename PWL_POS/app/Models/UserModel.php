@@ -6,27 +6,30 @@ use App\Http\Controllers\LevelController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Foundation\Auth\User as Authenticatable; // implementasi class Authenticatable
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class UserModel extends Authenticatable implements JWTSubject 
+class UserModel extends Authenticatable implements JWTSubject
 {
-public function getJWTIdentifier(){
-return $this->getKey();
-}
-public function getJWTCustomClaims(){ return [];
-}
-    
-    protected $table = 'm_user';        // Mendefinisikan nama tabel yang digunakan oleh model ini
-    protected $primaryKey = 'user_id';  // Mendefinisikan primary key dari tabel yang digunakan
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
 
-    protected $fillable = ['username', 'password', 'nama', 'level_id', 'foto', 'created_at', 'updated_at']; 
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
-    protected $hidden = ['password']; // jangan ditampilkan saat select
+    protected $table = 'm_user';
+    protected $primaryKey = 'user_id';
 
-    protected $casts= ['password' => 'hashed']; // casting password agar otomatis di hash
-    
+    protected $fillable = ['username', 'nama', 'password', 'level_id', 'foto', 'created_at', 'updated_at', 'image'];
+
+    protected $hidden = ['password'];
+    protected $casts = ['password' => 'hashed'];
 
     public function level(): BelongsTo
     {
@@ -57,8 +60,28 @@ public function getJWTCustomClaims(){ return [];
         return $this->level->level_kode;
     }
 
-    public function barang():HasMany
+    public function barang(): HasMany
     {
         return $this->hasMany(StokModel::class, 'stok_id', 'stok_id');
+    }
+
+    /**
+     * Accessor for the image URL
+     */
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn($image) => url('/storage/posts/' . $image),
+        );
+    }
+
+    /**
+     * Accessor for the foto URL
+     */
+    protected function foto(): Attribute
+    {
+        return Attribute::make(
+            get: fn($foto) => url('/storage/foto/' . $foto),
+        );
     }
 }
